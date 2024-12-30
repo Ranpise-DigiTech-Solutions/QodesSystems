@@ -4,14 +4,14 @@ import { Minus, Plus } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const ProcessCosultingPage = () => {
+const SapCoreBanking = () => {
   const [isContentHidden, setIsContentHidden] = useState(true);
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-start gap-0">
       <div className="w-full bg-secondary flex items-center justify-start py-4 px-12">
         <p className="text-start capitalize text-2xl text-white">
-          Process Consulting
+          SAP Core Banking
         </p>
       </div>
       <div className="w-[90%] h-full flex flex-col lg:flex-row items-stretch justify-center gap-6">
@@ -29,13 +29,24 @@ const ProcessCosultingPage = () => {
         />
         <div className="flex-1 h-full flex flex-col items-start justify-center pt-4 gap-3">
           <p className="text-wrap text-black text-[17px] leading-6">
-            Bring your expertise to our Consulting teams, which combine
-            technology, digitaland business operations expertise to envision,
-            design and deliver the end-to-end solutions that our clients—the
-            world’s top organizations--need to become high-performance
-            businesses and governments.We know how to mobilize the right people,
-            skills, alliances and technologies to deliver innovative results
-            that create high-performance businesses.
+            QODES Systems brings deep expertise in SAP Banking development and
+            implementation projects, positioning us as a trusted partner for
+            your SAP Banking-based IT transformation initiatives.
+          </p>
+          <p className="text-wrap text-black text-[17px] leading-6">
+            Our Solution Architects excel in conducting detailed solution
+            reviews at every phase of the project, addressing potential design
+            flaws early—long before the acceptance phase—ensuring the integrity
+            and feasibility of deliverables. This proactive approach allows you
+            to confidently progress through each project phase, achieving
+            measurable and solid results.
+          </p>
+          <p className="text-wrap text-black text-[17px] leading-6">
+            Leverage the content knowledge and extensive experience of our
+            experts to eliminate project risks, enhance efficiency, and execute
+            your projects on time with precision. Partner with QODES Systems to
+            transform your SAP Banking vision into a reliable, scalable, and
+            successful reality.
           </p>
           <div className="w-full flex items-center justify-end py-4">
             <div className="relative w-[85%] flex flex-col items-start justify-center gap-2">
@@ -79,4 +90,4 @@ const ProcessCosultingPage = () => {
   );
 };
 
-export default ProcessCosultingPage;
+export default SapCoreBanking;

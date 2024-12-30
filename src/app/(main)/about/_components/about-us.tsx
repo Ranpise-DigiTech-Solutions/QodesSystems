@@ -58,7 +58,7 @@ const AboutUsComponent = () => {
       <div className="w-full bg-secondary py-4 flex items-center justify-start px-16">
         <p className="text-start capitalize text-3xl text-white">about us</p>
       </div>
-      <div className="w-[90%] flex flex-col lg:flex-row items-center justify-center gap-6">
+      <div className="w-[95%] flex flex-col lg:flex-row items-start justify-center gap-6">
         <Image
           src={
             "https://qodestechnologies.com/wp-content/uploads/2015/02/1aboutus.jpg"
@@ -68,25 +68,21 @@ const AboutUsComponent = () => {
           height={0}
           unoptimized
           quality={100}
-          className="w-full lg:w-[70%] h-[250px] object-fill rounded-2xl pt-2"
+          className="w-full lg:w-[45%] h-[250px] object-fill rounded-2xl"
         />
-        <div className="flex-1 h-full flex flex-col items-start justify-center gap-4 text-base">
-          <p className="text-wrap text-black ">
-            Carving Technology is what we believe in{" "}
-            <span className="text-secondary transform transition-all duration-300 hover:text-secondary-hover">
-              QODES Systems
-            </span>
-            . We pride ourselves as a new generation technology company with zeal
-            to continuously excel in mapping technology with Business
-            expectations.
-          </p>
+        <div className="flex-1 h-full flex flex-col items-start justify-center gap-4 text-base py-2 leading-7">
           <p className="text-wrap text-black">
-            <span className="text-secondary transform transition-all duration-300 hover:text-secondary-hover">
-              QODES Systems
-            </span>{" "}
-            is a leading provider of Banking Suite of Products, SAP Services,
-            Software Testing Services, Data Center Solutions zipped with software
-            development using the latest cutting edge technologies.
+            Our company is a specialized consulting firm in the{" "}
+            <span className="font-bold"> CORE BANKING DOMAIN </span>, offering expertise in
+            <span className="font-bold"> SAP Core Banking </span>
+            and the
+            <span className="font-bold"> Temenos T24 Core Banking System. </span>
+            Additionally, we have developed proprietary,{" "}
+            <span className="font-bold"> AI-driven Core Banking Systems </span>
+            tailored to meet the unique needs of our clients. By leveraging
+            cutting-edge technology and deep industry knowledge, we empower
+            financial institutions to optimize their operations, enhance
+            customer experiences, and achieve seamless digital transformation.
           </p>
         </div>
       </div>

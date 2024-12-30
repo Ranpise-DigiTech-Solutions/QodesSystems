@@ -24,6 +24,14 @@ export default {
         "orange-tag": "var(--orange-tag)",
         "blue-tag": "var(--blue-tag)",
         "background-light": "var(--background-light)",
+        "blue-stripe": "var(--blue-stripe)",
+        "twitter": "var(--twitter)",
+        "facebook": "var(--facebook)",
+        "google": "var(--google)",
+        "linkedin": "var(--linkedin)",
+        "border" :"var(--border)",
+        "light-gray" :"var(--light-gray)",
+        "dark-gray" :"var(--dark-gray)"
       },
       borderRadius: {
         lg: "var(--radius)",

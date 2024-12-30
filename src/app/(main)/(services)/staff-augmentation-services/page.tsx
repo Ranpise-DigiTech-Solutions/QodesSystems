@@ -48,22 +48,13 @@ const StaffAugmentationServicesPage = () => {
         />
         <div className="flex-1 h-full flex flex-col items-start justify-center pt-4 gap-3">
           <p className="text-wrap text-black text-[17px] leading-6">
-            People are the focal point for any mission critical business or
-            project to be successfully completed and finding the right resource
-            to deliver your business objective is not an easy task, we
-            thoroughly understand the complexities and are the best to produce
-            timely results.
+          At QODES Systems, we offer specialized staff augmentation services to help financial institutions and technology providers bridge resource gaps and scale their teams with experienced professionals. Whether you&apos;re embarking on a complex core banking implementation, upgrading systems, or tackling strategic IT initiatives, our highly skilled professionals bring deep domain knowledge and technical expertise to meet your specific needs.
           </p>
           <p className="text-wrap text-black text-[17px] leading-6">
-            Recruitment has entered into a different league all together and
-            it’s our prime responsibility to keep a right blend of demand and
-            supply considering both Business and People expectations. Be it
-            Specialized skill or Niche skill sourcing; be it Permanent staffing
-            or Flexi staffing QODES can aid in these situations.
+          We provide flexible and scalable staffing solutions, enabling you to quickly access the right talent for critical roles, from Solution Architects and Developers to QA specialists and Business Analysts. With our staff augmentation services, you gain access to qualified professionals who seamlessly integrate into your teams, enhancing project delivery, driving innovation, and ensuring success at every phase of your implementation journey.
           </p>
           <p className="text-wrap text-black text-[17px] leading-6">
-            If you relate to parts or all of the above you might want to hear
-            more about our staff augmentation services
+          Let QODES Systems help you accelerate your projects and meet your business objectives with confidence, backed by top-tier talent.
           </p>
           <div className="w-full flex items-center justify-end py-4">
             <div className="relative w-[85%] flex flex-col items-start justify-center gap-6">

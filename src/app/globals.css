@@ -25,6 +25,11 @@ body {
     /* --secondary: rgb(5, 133, 247); */
     --secondary-hover: #3898ec;
     /* --secondary-dark: #152c5b; */
+    --blue-stripe: #2598DF;
+    --twitter: #84b3dc;
+    --facebook: #6c97bf;
+    --google: #d68778;
+    --linkedin: #6c97bf;
     --secondary-dark: #222222;
     --title: #8a95ad;
     --green-tag: #3a882e;
@@ -34,6 +39,9 @@ body {
     --blue-tag: #171d72;
     --background-light: rgba(138, 149, 173, 0.15);
     --base-font: 16.5px;
+    --border: #ccc;
+    --light-gray: #F8F8F8;
+    --dark-gray: #666;
   }
   .dark {
     --primary: #e0e6f1;
@@ -49,4 +57,13 @@ body {
     --blue-tag: #283593;
     --background-light: rgba(50, 60, 85, 0.5);
   }
+}
+
+.z-999 {
+  z-index: 999 !important;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
 }

@@ -47,31 +47,27 @@ const GetStartedComponent = () => {
 
     //     </div>
     // </div>
-    <div className="relative min-h-[15rem] w-full flex items-center justify-center gap-0 py-4 bg-primary-light">
-        <Image 
-            src={"/images/home-get-started-bg.png"}
-            alt="bg"
-            className="absolute inset-0 w-full h-full z-0 object-cover opacity-80"
-            width={0}
-            height={0}
-            unoptimized
-            quality={100}
-            draggable={false}
-        />
-      <div className="w-[95%] lg:w-[80%] h-full flex flex-col items-center justify-center gap-8 lg:gap-12 z-10">
-        <h2 className="text-center text-4xl lg:text-5xl text-black capitalize">
-          innovative banking technology company
+    <div className="relative min-h-[15rem] w-full flex flex-col items-center justify-center gap-2 py-4 bg-primary-light">
+      <Image
+        src={
+          "https://media.licdn.com/dms/image/v2/C5616AQHDFgARk-SGUw/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1516847633919?e=1741219200&v=beta&t=RvoIjUiLWZKhFO7OKECXrjiCIF0lsSU0nAY0-Cj_slQ"
+        }
+        alt="bg"
+        className=" inset-0 w-full min-h-[300px] z-0 object-cover"
+        width={0}
+        height={0}
+        unoptimized
+        quality={100}
+        draggable={false}
+      />
+      <div className="w-full px-3 py-8 h-full flex flex-col items-center justify-center gap-8 lg:gap-12 z-0 bg-blue-stripe">
+        <h2 className="text-center text-3xl lg:text-5xl text-white capitalize">
+          Core Banking Consulting & Technology Company
         </h2>
-        <p className="text-center leading-7 text-wrap w-full lg:w-[75%]">
-          {/* <span className="text-nowrap"> */}
-            QODES Systems is a leading provider of banking Suite Of Products,
-          {/* </span> */}
-
-          {/* <br /> */}
-          {/* <span className="text-wrap"> */}
-            SAP Services, Data Center Solutions Zipped with Software development
-            using the latest cutting edge technologies
-          {/* </span> */}
+        <p className="text-center leading-7 text-wrap w-full lg:w-[75%] text-lg lg:text-xl font-normal text-white">
+          QODES Systems is a premier provider of a comprehensive Core Banking
+          Suite of Products, including SAP Core Banking, Temenos T24 Core
+          Banking, and our AI-driven Core Banking System.
         </p>
       </div>
     </div>

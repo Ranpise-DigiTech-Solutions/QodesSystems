@@ -1,11 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
 import React from "react";
+
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import GoogleIcon from "@mui/icons-material/Google";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import Link from "next/link";
 
 const FooterComponent = () => {
   return (
     <div className="h-fit w-full flex items-center justify-center py-[3rem] bg-secondary-dark">
-      <div className="h-fit w-[80%] flex flex-col items-center justify-center gap-10">
+      {/* <div className="h-fit w-[80%] flex flex-col items-center justify-center gap-10">
         <div className="h-fit w-full flex flex-row items-start justify-between gap-12 lg:gap-6 flex-wrap">
           <div className="flex-1 min-w-[200px] flex items-center justify-start lg:justify-center">
             <div className="flex flex-col items-center lg:items-start justify-center gap-6">
@@ -82,6 +88,26 @@ const FooterComponent = () => {
               &nbsp;&quot;QODES Systems&quot;
             </Link>
           </p>
+        </div>
+      </div> */}
+      <div className="w-[90%] h-fit flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div className="flex flex-row items-center justify-center gap-3">
+          <FacebookOutlinedIcon className="bg-secondary-dark rounded-full text-facebook !w-10 !h-10" />
+          <div className="bg-twitter  rounded-full text-secondary-dark p-2 !w-8 !h-8 flex items-center justify-center">
+            <TwitterIcon />
+          </div>
+          <GoogleIcon className="bg-google rounded-full text-secondary-dark !w-8 !h-8 p-1" />
+          <LinkedInIcon className="bg-linkedin rounded-full text-secondary-dark !w-8 !h-8 p-1" />
+        </div>
+        <div className="text-base text-white text-center lg:text-end">
+          All Rights Reserved @2024 | Powered by &quot;
+          <Link
+            href="/"
+            className="cursor-pointer hover:underline underline-offset-2"
+          >
+            QODES Systems
+          </Link>
+          &quot;
         </div>
       </div>
     </div>

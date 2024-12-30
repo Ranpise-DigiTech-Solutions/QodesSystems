@@ -1,5 +1,6 @@
 import { serviceList } from "@/lib/constants";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const ServiceList = () => {
@@ -16,7 +17,7 @@ const ServiceList = () => {
         </div>
         <div className="w-full flex flex-row items-center justify-center flex-wrap gap-[4rem]">
           {serviceList.map((item, index) => (
-            <div
+            <Link href={item.href}
               className="w-[350px] h-[450px] bg-primary-light flex flex-col items-center justify-center gap-0 rounded-xl overflow-hidden"
               key={index}
             >
@@ -38,7 +39,7 @@ const ServiceList = () => {
                   {item.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

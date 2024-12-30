@@ -3,6 +3,7 @@ export type serviceListType = {
     title: string,
     description: string,
     imageUrl: string,
+    href: string,
 }[];
 
 export type ourValuesListType = {

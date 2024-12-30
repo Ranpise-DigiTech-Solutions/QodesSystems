@@ -2,15 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
-// import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
+
+import React, { useState } from "react";
 import { ChevronRight, Menu } from "lucide-react";
 import {
   Sheet,
@@ -20,20 +14,47 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useSheet } from "@/app/providers/sheet-provider";
+// import { Button } from "../ui/button";
+
+type MenuStateType = {
+  home: boolean;
+  services: boolean;
+  products: boolean;
+  itServices: boolean;
+  banking: boolean;
+  others: boolean;
+  coreBankingSystem: boolean;
+  reachUs: boolean;
+};
 
 const Navbar = () => {
-  const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
-  const [itServicesSubMenuOpen, setItServicesSubMenuOpen] = useState(false);
-  const [productsMenuOpen, setProductsMenuOpen] = useState(false);
-  const [bankingSubMenuOpen, setBankingSubMenuOpen] = useState(false);
-  const [othersSubMenuOpen, setOthersSubMenuOpen] = useState(false);
-  const [homeMenuOpen, setHomeMenuOpen] = useState(false);
+  const initialMenuState = {
+    home: false,
+    services: false,
+    products: false,
+    itServices: false,
+    banking: false,
+    others: false,
+    coreBankingSystem: false,
+    reachUs: false,
+  };
+  const [menuState, setMenuState] = useState<MenuStateType>(initialMenuState);
+
+  const handleMenuToggle = (key: keyof MenuStateType, value: boolean) => {
+    setMenuState((prevValue) => ({
+      ...prevValue,
+      [key]: value,
+    }));
+  };
 
   const { isSheetOpen, closeSheet, toggleSheet } = useSheet();
 
   return (
-    <div className="w-full h-[5rem] bg-primary flex flex-row items-center justify-center">
-      <div className="w-[90%] flex flex-row items-center justify-between gap-6">
+    <div
+      className="w-full h-[5rem] bg-primary flex flex-row items-center justify-center"
+      onMouseLeave={() => setMenuState(initialMenuState)}
+    >
+      <div className="w-[90%] flex flex-row items-center justify-between gap-2">
         <Link
           href={"/"}
           className="flex flex-row items-center justify-center gap-2"
@@ -49,301 +70,366 @@ const Navbar = () => {
           />
           <p className="text-2xl italic text-nowrap">QODES Systems</p>
         </Link>
-        <nav className="hidden lg:block">
-          <ul className="flex flex-row items-center justify-center gap-8">
-            <li
-              onMouseEnter={() => setHomeMenuOpen(true)}
-              onMouseLeave={() => setHomeMenuOpen(false)}
+        <ul className="flex-1 hidden lg:flex flex-row items-center justify-center gap-12">
+          <li
+            className={cn(
+              `relative group text-lg font-normal capitalize text-nowrap text-black transform transition-all duration-300 hover:text-secondary z-999 cursor-pointer`,
+              ""
+            )}
+          >
+            <Link href={"/"}>Home</Link>
+          </li>
+          <li
+            className={cn(
+              `relative group text-lg font-normal capitalize text-nowrap text-black transform transition-all duration-300 hover:text-secondary z-999 cursor-pointer`,
+              ""
+            )}
+            onMouseEnter={() =>
+              setMenuState({ ...initialMenuState, home: true })
+            }
+          >
+            <Link href={"/about"}>about us</Link>
+          </li>
+          <li
+            className={cn(
+              `relative group text-lg capitalize text-nowrap text-black transform transition-all duration-300 hover:text-secondary z-999`,
+              menuState.coreBankingSystem ? "text-secondary" : "text-black"
+            )}
+            onMouseEnter={() =>
+              setMenuState({ ...initialMenuState, coreBankingSystem: true })
+            }
+          >
+            <p>core banking system</p>
+            <div
+              // onMouseLeave={() => handleMenuToggle("services", false)}
+              className={cn(
+                `absolute -left-10 right-0 bg-white px-4 py-3 top-10 text-nowrap w-[225px] shadow-lg shadow-title border border-secondary overflow-auto`,
+                menuState.coreBankingSystem ? "block" : "hidden"
+              )}
             >
-              <DropdownMenu open={homeMenuOpen}>
-                {/* Trigger the dropdown on hover */}
-                <div>
-                  <DropdownMenuTrigger asChild>
-                    <a
-                      href="#"
-                      className={twMerge(
-                        `group text-lg cursor-pointer hover:text-secondary flex flex-col items-center justify-center transition transform-all duration-300 outline-none`,
-                        homeMenuOpen && "text-secondary"
-                      )}
-                    >
-                      Home
-                      <div className="relative">
-                        <span
-                          className={twMerge(
-                            `hidden group-hover:block absolute -bottom-3 h-2 w-2 bg-secondary rounded-full`,
-                            homeMenuOpen && "block"
-                          )}
-                        ></span>
-                      </div>
-                    </a>
-                  </DropdownMenuTrigger>
-                </div>
-                <DropdownMenuContent className="w-56 z-[1000] flex flex-col items-start justify-center gap-4 bg-white p-4 mt-0">
-                  <Link href={"/about"}>
-                    <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                      About Us
-                    </DropdownMenuItem>
+              <ul className="w-full flex flex-col items-start justify-center gap-3">
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/sap-core-banking"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    SAP core banking
                   </Link>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </li>
-            <li
-              onMouseEnter={() => setServicesMenuOpen(true)}
-              onMouseLeave={() => {
-                setItServicesSubMenuOpen(false);
-                setServicesMenuOpen(false);
-              }}
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/temenos-t24-core-banking"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    Temenos T24 Core Banking
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/proprietary-qodes-core-banking-system"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary leading-5"
+                  >
+                    Qodes <br /> Core Banking System
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li
+            className={cn(
+              `relative group text-lg capitalize text-nowrap text-black transform transition-all duration-300 hover:text-secondary z-999`,
+              menuState.services ? "text-secondary" : "text-black"
+            )}
+            onMouseEnter={() =>
+              setMenuState({ ...initialMenuState, services: true })
+            }
+          >
+            <p>services</p>
+            <div
+              // onMouseLeave={() => handleMenuToggle("services", false)}
+              className={cn(
+                `absolute -left-20 right-0 bg-white px-4 py-3 top-10 text-nowrap w-[225px] shadow-lg shadow-title border border-secondary overflow-auto`,
+                menuState.services ? "block" : "hidden"
+              )}
             >
-              <DropdownMenu open={servicesMenuOpen}>
-                {/* Trigger the dropdown on hover */}
-                <div>
-                  <DropdownMenuTrigger asChild>
-                    <a
-                      href="#"
-                      className={twMerge(
-                        `group text-lg cursor-pointer hover:text-secondary flex flex-col items-center justify-center transition transform-all duration-300 outline-none`,
-                        servicesMenuOpen && "text-secondary"
-                      )}
-                    >
-                      Services
-                      <div className="relative">
-                        <span
-                          className={twMerge(
-                            `hidden group-hover:block absolute -bottom-3 h-2 w-2 bg-secondary rounded-full`,
-                            servicesMenuOpen && "block"
-                          )}
-                        ></span>
-                      </div>
-                    </a>
-                  </DropdownMenuTrigger>
-                </div>
-                <DropdownMenuContent className="w-56 flex flex-col items-start justify-center gap-4 bg-white p-4 mt-0 !z-50">
-                  <DropdownMenuItem
-                    className="w-full relative outline-none cursor-pointer"
-                    onMouseEnter={() => setItServicesSubMenuOpen(true)}
+              <ul className="w-full flex flex-col items-start justify-center gap-3">
+                <li
+                  className="w-full flex items-center justify-between gap-2 cursor-pointer"
+                  onMouseEnter={() => handleMenuToggle("itServices", true)}
+                >
+                  <Link
+                    href={"/it-security-assessment"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
                   >
-                    <div
-                      className={twMerge(
-                        `w-full flex flex-row items-center justify-between gap-6 transform transition-all duration-300 hover:text-secondary`,
-                        itServicesSubMenuOpen && "text-secondary"
-                      )}
-                    >
-                      <p className="capitalize">iT security</p>
-                      <ChevronRight className="w-[20px]" />
-                    </div>
-                    {itServicesSubMenuOpen && (
-                      <DropdownMenuContent
-                        className="w-56 flex flex-col items-start justify-center gap-4 bg-white p-4 mt-2 absolute left-28"
-                        onMouseLeave={() => setItServicesSubMenuOpen(false)}
-                      >
-                        <Link href={"/it-security-assessment"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            IT security assessment
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/security-compliance"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            Security compliance
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/penetration-testing"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            Penetration testing
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/vulnerability-assessment"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            Vulnerability assessment
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/application-security-testing"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            Application security testing
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/source-code-review"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            Source code review
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/ict-environment-audit"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            ICT environment audit
-                          </DropdownMenuItem>
-                        </Link>
-                      </DropdownMenuContent>
-                    )}
-                  </DropdownMenuItem>
-                  <Link href={"/sap-services"}>
-                    <DropdownMenuItem className="w-full capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                      SAP services
-                    </DropdownMenuItem>
+                    iT security
                   </Link>
-                  <Link href={"/application-development"}>
-                    <DropdownMenuItem className="w-full capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                      application development
-                    </DropdownMenuItem>
+                  <ChevronRight className="text-black !w-5 !h-5" />
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/sap-services"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    SAP services
                   </Link>
-                  <Link href={"/process-consulting"}>
-                    <DropdownMenuItem className="w-full capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                      process consulting
-                    </DropdownMenuItem>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/application-development"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    application development
                   </Link>
-                  <Link href={"/support-services"}>
-                    <DropdownMenuItem className="w-full capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                      support services
-                    </DropdownMenuItem>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/software-testing-services"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary leading-5"
+                  >
+                    software testing /<br />
+                    quality engineering
                   </Link>
-                  <Link href={"/software-testing-services"}>
-                    <DropdownMenuItem className="w-full capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                      software testing/ quality engineering
-                    </DropdownMenuItem>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/staff-augmentation-services"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    staff augmentation services
                   </Link>
-                  <Link href={"/staff-augmentation-services"}>
-                    <DropdownMenuItem className="w-full capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                      staff augmentation services
-                    </DropdownMenuItem>
-                  </Link>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </li>
-            <li
-              onMouseEnter={() => setProductsMenuOpen(true)}
-              onMouseLeave={() => {
-                setBankingSubMenuOpen(false);
-                setOthersSubMenuOpen(false);
-                setProductsMenuOpen(false);
-              }}
+                </li>
+              </ul>
+            </div>
+            <div
+              onMouseLeave={() => handleMenuToggle("itServices", false)}
+              className={cn(
+                `absolute left-[145px] right-0 bg-white px-4 py-3 top-10 text-nowrap w-[225px] shadow-lg shadow-title border border-secondary`,
+                menuState.itServices ? "block" : "hidden"
+              )}
             >
-              <DropdownMenu open={productsMenuOpen}>
-                {/* Trigger the dropdown on hover */}
-                <div>
-                  <DropdownMenuTrigger asChild>
-                    <a
-                      href="#"
-                      className={twMerge(
-                        `group text-lg cursor-pointer hover:text-secondary flex flex-col items-center justify-center transition transform-all duration-300 outline-none`,
-                        productsMenuOpen && "text-secondary"
-                      )}
-                    >
-                      Products
-                      <div className="relative">
-                        <span
-                          className={twMerge(
-                            `hidden group-hover:block absolute -bottom-3 h-2 w-2 bg-secondary rounded-full`,
-                            productsMenuOpen && "block"
-                          )}
-                        ></span>
-                      </div>
-                    </a>
-                  </DropdownMenuTrigger>
-                </div>
-                <DropdownMenuContent className="w-56 z-[1000] flex flex-col items-start justify-center gap-4 bg-white p-4 mt-0">
-                  <DropdownMenuItem
-                    className="w-full relative outline-none cursor-pointer"
-                    onMouseEnter={() => {
-                      setOthersSubMenuOpen(false);
-                      setBankingSubMenuOpen(true);
-                    }}
+              <ul className="w-full flex flex-col items-start justify-center gap-3">
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/it-security-assessment"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
                   >
-                    <div
-                      className={twMerge(
-                        `w-full flex flex-row items-center justify-between gap-6 transform transition-all duration-300 hover:text-secondary`,
-                        bankingSubMenuOpen && "text-secondary"
-                      )}
-                    >
-                      <p className="capitalize">banking</p>
-                      <ChevronRight className="w-[20px]" />
-                    </div>
-                    {bankingSubMenuOpen && (
-                      <DropdownMenuContent
-                        className="w-56 flex flex-col items-start justify-center gap-4 bg-white p-4 mt-2 absolute left-28 -top-2"
-                        onMouseLeave={() => setBankingSubMenuOpen(false)}
-                      >
-                        <Link href={"/core-banking-system"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            core banking system
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/loan-software"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            loan software
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/remittance-management-system"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            remittance management system
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/internet-banking-system"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            Internet banking system
-                          </DropdownMenuItem>
-                        </Link>
-                        <Link href={"/mobile-banking"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            mobile banking
-                          </DropdownMenuItem>
-                        </Link>
-                      </DropdownMenuContent>
-                    )}
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    className="w-full relative outline-none cursor-pointer"
-                    onMouseEnter={() => {
-                      setBankingSubMenuOpen(false);
-                      setOthersSubMenuOpen(true);
-                    }}
+                    iT security assessment
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/security-compliance"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
                   >
-                    <div
-                      className={twMerge(
-                        `w-full flex flex-row items-center justify-between gap-6 transform transition-all duration-300 hover:text-secondary cursor-pointer`,
-                        othersSubMenuOpen && "text-secondary"
-                      )}
-                    >
-                      <p className="capitalize">others</p>
-                      <ChevronRight className="w-[20px]" />
-                    </div>
-                    {othersSubMenuOpen && (
-                      <DropdownMenuContent
-                        className="w-56 flex flex-col items-start justify-center gap-4 bg-white p-4 mt-2 absolute left-28 top-9"
-                        onMouseLeave={() => setOthersSubMenuOpen(false)}
-                      >
-                        <Link href={"/hrms-package"}>
-                          <DropdownMenuItem className="capitalize outline-none cursor-pointer transform transition-all duration-300 hover:text-secondary">
-                            HRMS Package
-                          </DropdownMenuItem>
-                        </Link>
-                      </DropdownMenuContent>
-                    )}
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </li>
-            <li>
-              <Link
-                href="/join-us"
-                className="group text-lg cursor-pointer hover:text-secondary flex flex-col items-center justify-center transition transform-all duration-300"
-              >
-                Join us
-                <div className="relative">
-                  <span className="hidden group-hover:block absolute -bottom-3 h-2 w-2 bg-secondary rounded-full"></span>
-                </div>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="group text-lg cursor-pointer hover:text-secondary flex flex-col items-center justify-center transition transform-all duration-300"
-              >
-                Contact Us
-                <div className="relative">
-                  <span className="hidden group-hover:block absolute -bottom-3 h-2 w-2 bg-secondary rounded-full"></span>
-                </div>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+                    security compliance
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/penetration-testing"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    penetration testing
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/vulnerability-assessment"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    vulnerability assessment
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/application-security-testing"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    application security testing
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/source-code-review"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    source code review
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/ict-environment-audit"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    ICT environment audit
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          {/* <li
+            className={cn(
+              `relative group text-lg capitalize text-nowrap text-black transform transition-all duration-300 hover:text-secondary z-999`,
+              menuState.products ? "text-secondary" : "text-black"
+            )}
+            onMouseEnter={() =>
+              setMenuState({ ...initialMenuState, products: true })
+            }
+          >
+            <p>products</p>
+            <div
+              // onMouseLeave={() => handleMenuToggle("services", false)}
+              className={cn(
+                `absolute -left-16 right-0 bg-white px-4 py-3 top-10 text-nowrap w-[200px] shadow-lg shadow-title border border-secondary overflow-auto`,
+                menuState.products ? "block" : "hidden"
+              )}
+            >
+              <ul className="w-full flex flex-col items-start justify-center gap-3">
+                <li
+                  className="w-full flex items-center justify-between gap-2 cursor-pointer"
+                  onMouseEnter={() =>
+                    setMenuState({
+                      ...menuState,
+                      banking: true,
+                      others: false,
+                    })
+                  }
+                >
+                  <Link href={"/core-banking-system"} className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary">
+                    banking
+                  </Link>
+                  <ChevronRight className="text-black !w-5 !h-5" />
+                </li>
+                <li
+                  className="w-full flex items-center justify-between gap-2 cursor-pointer"
+                  onMouseEnter={() =>
+                    setMenuState({
+                      ...menuState,
+                      banking: false,
+                      others: true,
+                    })
+                  }
+                >
+                  <Link href={"/other-products"} className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary">
+                    others
+                  </Link>
+                  <ChevronRight className="text-black !w-5 !h-5" />
+                </li>
+              </ul>
+            </div>
+            <div
+              onMouseLeave={() => handleMenuToggle("banking", false)}
+              className={cn(
+                `absolute left-[135px] right-0 bg-white px-4 py-3 top-10 text-nowrap w-[225px] shadow-lg shadow-title border border-secondary`,
+                menuState.banking ? "block" : "hidden"
+              )}
+            >
+              <ul className="w-full flex flex-col items-start justify-center gap-3">
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/core-banking-system"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    core banking system
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/loan-software"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    loan software
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/remittance-management-system"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    remittance management
+                    <br /> system
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/internet-banking-system"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    internet banking system
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/mobile-banking"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    mobile banking
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div
+              onMouseLeave={() => handleMenuToggle("others", false)}
+              className={cn(
+                `absolute left-[135px] right-0 bg-white px-4 py-3 top-[80px] text-nowrap w-[225px] shadow-lg shadow-title border border-secondary`,
+                menuState.others ? "block" : "hidden"
+              )}
+            >
+              <ul className="w-full flex flex-col items-start justify-center gap-3">
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/hrms-package"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    HRMS package
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li> */}
+          <li
+            className={cn(
+              `relative group text-lg capitalize text-nowrap text-black transform transition-all duration-300 hover:text-secondary z-999`,
+              menuState.reachUs ? "text-secondary" : "text-black"
+            )}
+            onMouseEnter={() =>
+              setMenuState({ ...initialMenuState, reachUs: true })
+            }
+          >
+            <p>reach us</p>
+            <div
+              // onMouseLeave={() => handleMenuToggle("services", false)}
+              className={cn(
+                `absolute -left-10 right-0 bg-white px-4 py-3 top-10 text-nowrap w-[150px] shadow-lg shadow-title border border-secondary overflow-auto`,
+                menuState.reachUs ? "block" : "hidden"
+              )}
+            >
+              <ul className="w-full flex flex-col items-start justify-center gap-3">
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/join-us"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
+                  >
+                    join us
+                  </Link>
+                </li>
+                <li className="w-full flex items-center justify-start cursor-pointer">
+                  <Link
+                    href={"/contact"}
+                    className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary leading-5"
+                  >
+                    contact us
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+        
+        </ul>
+        <div className=" w-[10px] ">
+         
+        </div>
+
         <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
           {" "}
           {/* Use the state to control open/close */}
@@ -452,18 +538,18 @@ const Navbar = () => {
                     application development
                   </Link>
                   <Link
-                    href={"/process-consulting"}
+                    href={"/sap-core-banking"}
                     className="text-lg text-black capitalize pl-[2rem]"
                     onClick={closeSheet}
                   >
-                    process consulting
+                    SAP core banking
                   </Link>
                   <Link
-                    href={"/support-services"}
+                    href={"/temenos-t24-core-banking"}
                     className="text-lg text-black capitalize pl-[2rem]"
                     onClick={closeSheet}
                   >
-                    support services
+                    Temenos T24 Core Banking
                   </Link>
                   <Link
                     href={"/software-testing-services"}
@@ -478,6 +564,13 @@ const Navbar = () => {
                     onClick={closeSheet}
                   >
                     staff augmentation services
+                  </Link>
+                  <Link
+                    href={"/proprietary-qodes-core-banking-system"}
+                    className="text-lg text-black capitalize pl-[2rem]"
+                    onClick={closeSheet}
+                  >
+                    Qodes Core Banking System
                   </Link>
                 </div>
                 <div className="flex flex-col items-start justify-center gap-4">
@@ -532,7 +625,13 @@ const Navbar = () => {
                   </Link>
                 </div>
                 <div className="flex flex-col items-start justify-center gap-4">
-                  <p className="capitalize text-black text-lg">join us</p>
+                  <Link
+                    href={"/join-us"}
+                    className="capitalize text-black text-lg cursor-pointer"
+                    onClick={closeSheet}
+                  >
+                    join us
+                  </Link>
                 </div>
                 <div className="flex flex-col items-start justify-center gap-4">
                   <Link
@@ -541,6 +640,15 @@ const Navbar = () => {
                     onClick={closeSheet}
                   >
                     contact us
+                  </Link>
+                </div>
+                <div className="flex flex-col items-start justify-center gap-4">
+                  <Link
+                    href={"/location"}
+                    className="capitalize text-black text-lg cursor-pointer"
+                    onClick={closeSheet}
+                  >
+                    location
                   </Link>
                 </div>
               </div>
@@ -553,3 +661,73 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// {/* <NavigationMenu>
+// <NavigationMenuList>
+//   {/* Main Dropdown */}
+//   <NavigationMenuItem className="relative">
+//     <NavigationMenuTrigger className="text-lg capitalize text-nowrap">
+//       <Link href={"/"}>Home</Link>
+//     </NavigationMenuTrigger>
+//     <NavigationMenuContent className="absolute bg-white h-fit px-4 py-3 flex flex-col items-start justify-center gap-3 shadow-lg z-999">
+//       <ul className="w-fit h-fit flex flex-col items-start justify-center gap-3">
+//         <li>
+//           <NavigationMenuLink asChild>
+//             <Link
+//               className="outline-none focus:shadow-md capitalize text-lg text-black text-nowrap transform transition-all hover:text-secondary"
+//               href="/about"
+//             >
+//               about us
+//             </Link>
+//           </NavigationMenuLink>
+//         </li>
+//       </ul>
+//     </NavigationMenuContent>
+//   </NavigationMenuItem>
+//   <NavigationMenuItem className="relative">
+//     <NavigationMenuTrigger className="text-lg capitalize text-nowrap">
+//       <Link href={"/"}>services</Link>
+//     </NavigationMenuTrigger>
+//     <NavigationMenuContent className="absolute bg-white h-fit px-4 py-3 flex flex-col items-start justify-center gap-3 shadow-lg z-999">
+//       <ul className="w-[400px] h-fit flex flex-col items-start justify-center gap-3">
+//         <li>
+//           <NavigationMenuLink asChild>
+//             <Link
+//               className="outline-none focus:shadow-md capitalize text-lg text-black text-nowrap transform transition-all hover:text-secondary"
+//               href="/about"
+//             >
+//               iT security
+//             </Link>
+//           </NavigationMenuLink>
+//         </li>
+//         <li>
+//           <NavigationMenuLink asChild>
+//             <Link
+//               className="outline-none focus:shadow-md capitalize text-lg text-black text-nowrap transform transition-all hover:text-secondary"
+//               href="/about"
+//             >
+//               iT infrastructure services
+//             </Link>
+//           </NavigationMenuLink>
+//         </li>
+//       </ul>
+//     </NavigationMenuContent>
+//   </NavigationMenuItem>
+//   <NavigationMenuItem>
+//     <NavigationMenuTrigger className="text-lg capitalize">
+//       Product
+//     </NavigationMenuTrigger>
+//   </NavigationMenuItem>
+//   <NavigationMenuItem>
+//     <NavigationMenuTrigger className="text-lg capitalize">
+//       Join us
+//     </NavigationMenuTrigger>
+//   </NavigationMenuItem>
+//   <NavigationMenuItem>
+//     <NavigationMenuTrigger className="text-lg capitalize">
+//       Contact
+//     </NavigationMenuTrigger>
+//   </NavigationMenuItem>
+// </NavigationMenuList>
+// <NavigationMenuViewport />
+// </NavigationMenu> */}
