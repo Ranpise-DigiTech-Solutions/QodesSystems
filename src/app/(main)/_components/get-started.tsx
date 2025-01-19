@@ -50,7 +50,7 @@ const GetStartedComponent = () => {
     <div className="relative min-h-[15rem] w-full flex flex-col items-center justify-center gap-2 py-4 bg-primary-light">
       <Image
         src={
-          "https://media.licdn.com/dms/image/v2/C5616AQHDFgARk-SGUw/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1516847633919?e=1741219200&v=beta&t=RvoIjUiLWZKhFO7OKECXrjiCIF0lsSU0nAY0-Cj_slQ"
+          "/images/home-get-started-bg.jpg"
         }
         alt="bg"
         className=" inset-0 w-full min-h-[300px] z-0 object-cover"
@@ -60,7 +60,7 @@ const GetStartedComponent = () => {
         quality={100}
         draggable={false}
       />
-      <div className="w-full px-3 py-8 h-full flex flex-col items-center justify-center gap-8 lg:gap-12 z-0 bg-blue-stripe">
+      <div className="w-full px-3 py-8 h-full flex flex-col items-center justify-center gap-8 lg:gap-12 z-0 bg-secondary">
         <h2 className="text-center text-3xl lg:text-5xl text-white capitalize">
           Core Banking Consulting & Technology Company
         </h2>

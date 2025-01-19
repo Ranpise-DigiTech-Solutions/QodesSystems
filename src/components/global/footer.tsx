@@ -3,10 +3,10 @@
 import React from "react";
 
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import GoogleIcon from "@mui/icons-material/Google";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from '@mui/icons-material/Instagram';
 import Link from "next/link";
+import XIcon from '@mui/icons-material/X';
 
 const FooterComponent = () => {
   return (
@@ -93,11 +93,11 @@ const FooterComponent = () => {
       <div className="w-[90%] h-fit flex flex-col lg:flex-row items-center justify-between gap-8">
         <div className="flex flex-row items-center justify-center gap-3">
           <FacebookOutlinedIcon className="bg-secondary-dark rounded-full text-facebook !w-10 !h-10" />
-          <div className="bg-twitter  rounded-full text-secondary-dark p-2 !w-8 !h-8 flex items-center justify-center">
-            <TwitterIcon />
+          <div className="bg-linkedin  rounded-full text-secondary-dark p-2 !w-8 !h-8 flex items-center justify-center">
+            <XIcon />
           </div>
-          <GoogleIcon className="bg-google rounded-full text-secondary-dark !w-8 !h-8 p-1" />
           <LinkedInIcon className="bg-linkedin rounded-full text-secondary-dark !w-8 !h-8 p-1" />
+          <InstagramIcon className="bg-linkedin rounded-full text-secondary-dark !w-8 !h-8 p-1" />
         </div>
         <div className="text-base text-white text-center lg:text-end">
           All Rights Reserved @2024 | Powered by &quot;

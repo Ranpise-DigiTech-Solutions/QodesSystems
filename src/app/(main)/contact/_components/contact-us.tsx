@@ -62,10 +62,10 @@ const ContactUsComponent = () => {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="w-[90%] h-fit flex flex-row items-center justify-between gap-0"
+        className="w-[90%] h-fit flex flex-col lg:flex-row items-center justify-between lg:gap-0 gap-6"
       >
-        <div className="flex-1 h-fit flex flex-col items-start justify-center gap-6">
-          <div className="flex flex-col items-start justify-center gap-2">
+        <div className="w-full flex-1 h-fit flex flex-col items-start justify-center gap-6">
+          <div className="w-full flex flex-col items-start justify-center gap-2">
             <label htmlFor="name">Name (required)</label>
             <input
               title="name"
@@ -74,10 +74,10 @@ const ContactUsComponent = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
+              className="w-full lg:!w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
             />
           </div>
-          <div className="flex flex-col items-start justify-center gap-2">
+          <div className="w-full flex flex-col items-start justify-center gap-2">
             <label htmlFor="email">Email (required)</label>
             <input
               title="email"
@@ -86,10 +86,10 @@ const ContactUsComponent = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
+              className="w-full lg:!w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
             />
           </div>
-          <div className="flex flex-col items-start justify-center gap-2">
+          <div className="w-full flex flex-col items-start justify-center gap-2">
             <label htmlFor="phone">Phone</label>
             <input
               title="phone"
@@ -97,10 +97,10 @@ const ContactUsComponent = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
+              className="w-full lg:!w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
             />
           </div>
-          <div className="flex flex-col items-start justify-center gap-2">
+          <div className="w-full flex flex-col items-start justify-center gap-2">
             <label htmlFor="subject">Subject</label>
             <input
               title="subject"
@@ -108,17 +108,17 @@ const ContactUsComponent = () => {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              className="w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
+              className="w-full lg:!w-[400px] h-full px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
             />
           </div>
-          <div className="flex flex-col items-start justify-center gap-2">
+          <div className="w-full flex flex-col items-start justify-center gap-2">
             <label htmlFor="message">Your Message</label>
             <textarea
               title="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="w-[400px] h-[150px] px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
+              className="w-full lg:!w-[400px] h-[150px] px-4 py-2 border-[1.5px] placeholder:text-title text-black bg-light-gray border-border text-dark-gray"
             />
           </div>
           <Button
@@ -129,7 +129,7 @@ const ContactUsComponent = () => {
           </Button>
           {status && <p>{status}</p>}
         </div>
-        <div className="flex-1 flex flex-col items-center justify-center gap-4">
+        <div className="flex-1 flex flex-col items-center justify-center lg:gap-4 gap-12">
           <div className="w-full flex flex-col items-center justify-center gap-4">
             <p className="text-base text-black">
               Email –{" "}
@@ -141,7 +141,7 @@ const ContactUsComponent = () => {
               Phone - +61 457170962
             </a> 
           </div>
-          <div className="flex-1 flex items-center justify-center min-h-[300px]">
+          <div className="flex-1 flex items-center justify-center !w-[400px] md:!w-[500px] lg:w-auto min-h-[250px] lg:min-h-[300px]">
             <Map />
           </div>
         </div>

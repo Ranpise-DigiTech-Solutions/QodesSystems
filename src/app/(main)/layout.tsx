@@ -27,7 +27,7 @@ const HomeLayout = ({ children }: Props) => {
       </div> */}
         <Navbar />
         {children}
-        <div className="w-full h-[10px] bg-blue-stripe">
+        <div className="w-full h-[10px] bg-secondary">
 
       </div>
         <Footer />

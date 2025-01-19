@@ -64,11 +64,11 @@ const Navbar = () => {
             alt="Logo"
             width={0}
             height={0}
-            className="w-[3rem] lg:w-[5rem] lg:h-[4rem] rounded-xl transform transition-transform duration-300 hover:scale-95 cursor-pointer shadow-sm shadow-black"
+            className="w-[6rem] h-[3rem] md:h-[4rem] lg:h-[4rem] rounded-xl transform transition-transform duration-300 hover:scale-95 cursor-pointer"
             unoptimized
             quality={100}
           />
-          <p className="text-2xl italic text-nowrap">QODES Systems</p>
+          {/* <p className="text-2xl italic text-nowrap">QODES Systems</p> */}
         </Link>
         <ul className="flex-1 hidden lg:flex flex-row items-center justify-center gap-12">
           <li
@@ -126,7 +126,7 @@ const Navbar = () => {
                 </li>
                 <li className="w-full flex items-center justify-start cursor-pointer">
                   <Link
-                    href={"/proprietary-qodes-core-banking-system"}
+                    href={"/qodes-core-banking-system"}
                     className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary leading-5"
                   >
                     Qodes <br /> Core Banking System
@@ -165,7 +165,10 @@ const Navbar = () => {
                   </Link>
                   <ChevronRight className="text-black !w-5 !h-5" />
                 </li>
-                <li className="w-full flex items-center justify-start cursor-pointer">
+                <li
+                  className="w-full flex items-center justify-start cursor-pointer"
+                  onMouseEnter={() => handleMenuToggle("itServices", false)}
+                >
                   <Link
                     href={"/sap-services"}
                     className="text-black text-base capitalize text-nowrap transform transition-all duration-300 hover:text-secondary"
@@ -424,11 +427,8 @@ const Navbar = () => {
               </ul>
             </div>
           </li>
-        
         </ul>
-        <div className=" w-[10px] ">
-         
-        </div>
+        <div className=" w-[10px] "></div>
 
         <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
           {" "}
@@ -436,7 +436,7 @@ const Navbar = () => {
           <SheetTrigger className="block lg:hidden" onClick={toggleSheet}>
             {" "}
             {/* Toggle the state when clicked */}
-            <Menu className="cursor-pointer" />
+            <Menu className="cursor-pointer h-[1.5rem] w-[1.5rem]  md:h-[1.75rem] md:w-[1.75rem]" />
           </SheetTrigger>
           <SheetContent className="bg-white w-full overflow-y-auto">
             <SheetHeader className="hidden">
@@ -446,41 +446,74 @@ const Navbar = () => {
               <Link
                 href={"/"}
                 className="flex flex-row items-center justify-center gap-2"
+                onClick={closeSheet}
               >
                 <Image
                   src={"/images/logo.jpg"}
                   alt="Logo"
                   width={0}
                   height={0}
-                  className="w-[2.5rem] lg:w-[5rem] lg:h-[4rem] rounded-xl transform transition-transform duration-300 hover:scale-95 cursor-pointer"
+                  className="w-[6rem] h-[3rem] md:h-[4rem] rounded-xl transform transition-transform duration-300 hover:scale-95 cursor-pointer"
                   unoptimized
                   quality={100}
                 />
-                <p className="text-xl italic text-nowrap">QODES Systems</p>
+                {/* <p className="text-xl italic text-nowrap">QODES Systems</p> */}
               </Link>
               <div className="flex flex-col items-start justify-center gap-6 px-6">
                 <div className="flex flex-col items-start justify-center gap-4">
-                  <p className="capitalize text-black text-lg">home</p>
+                  <Link
+                    href={"/"}
+                    className="capitalize text-black text-lg cursor-pointer"
+                    onClick={closeSheet}
+                  >
+                    home
+                  </Link>
+                </div>
+                <div className="flex flex-col items-start justify-center gap-4">
                   <Link
                     href={"/about"}
-                    className="text-lg text-black capitalize pl-[2rem] cursor-pointer"
+                    className="capitalize text-black text-lg cursor-pointer"
                     onClick={closeSheet}
                   >
                     about us
                   </Link>
                 </div>
                 <div className="flex flex-col items-start justify-center gap-4">
+                  <p className="capitalize text-black text-lg cursor-pointer">
+                    core banking system
+                  </p>
+                  <Link
+                    href={"/sap-core-banking"}
+                    className="text-lg text-black capitalize pl-[2rem] cursor-pointer"
+                    onClick={closeSheet}
+                  >
+                    sAP Core Banking
+                  </Link>
+                  <Link
+                    href={"/temenos-t24-core-banking"}
+                    className="text-lg text-black capitalize pl-[2rem] cursor-pointer"
+                    onClick={closeSheet}
+                  >
+                    Temenos T24 Core Banking
+                  </Link>
+                  <Link
+                    href={"/qodes-core-banking-system"}
+                    className="text-lg text-black capitalize pl-[2rem] cursor-pointer"
+                    onClick={closeSheet}
+                  >
+                    Qodes Core Banking System
+                  </Link>
+                </div>
+
+                <div className="flex flex-col items-start justify-center gap-4">
                   <p className="capitalize text-black text-lg">services</p>
                   <Link
-                    href={"/sap-services"}
+                    href={"/it-security-assessment"}
                     className="text-lg text-black capitalize pl-[2rem]"
                     onClick={closeSheet}
                   >
-                    sAP services
+                    IT Security
                   </Link>
-                  <p className="text-lg text-black capitalize pl-[2rem]">
-                    IT security
-                  </p>
                   <Link
                     href={"/it-security-assessment"}
                     className="text-lg text-black capitalize pl-[4rem]"
@@ -531,25 +564,18 @@ const Navbar = () => {
                     ICT environment audit
                   </Link>
                   <Link
+                    href={"/sap-services"}
+                    className="text-lg text-black capitalize pl-[2rem]"
+                    onClick={closeSheet}
+                  >
+                    SAP Services
+                  </Link>
+                  <Link
                     href={"/application-development"}
                     className="text-lg text-black capitalize pl-[2rem]"
                     onClick={closeSheet}
                   >
                     application development
-                  </Link>
-                  <Link
-                    href={"/sap-core-banking"}
-                    className="text-lg text-black capitalize pl-[2rem]"
-                    onClick={closeSheet}
-                  >
-                    SAP core banking
-                  </Link>
-                  <Link
-                    href={"/temenos-t24-core-banking"}
-                    className="text-lg text-black capitalize pl-[2rem]"
-                    onClick={closeSheet}
-                  >
-                    Temenos T24 Core Banking
                   </Link>
                   <Link
                     href={"/software-testing-services"}
@@ -565,15 +591,8 @@ const Navbar = () => {
                   >
                     staff augmentation services
                   </Link>
-                  <Link
-                    href={"/proprietary-qodes-core-banking-system"}
-                    className="text-lg text-black capitalize pl-[2rem]"
-                    onClick={closeSheet}
-                  >
-                    Qodes Core Banking System
-                  </Link>
                 </div>
-                <div className="flex flex-col items-start justify-center gap-4">
+                {/* <div className="flex flex-col items-start justify-center gap-4">
                   <p className="capitalize text-black text-lg">products</p>
                   <p className="capitalize text-black text-lg pl-[2rem]">
                     banking
@@ -623,32 +642,27 @@ const Navbar = () => {
                   >
                     HRMS package
                   </Link>
-                </div>
+                </div> */}
                 <div className="flex flex-col items-start justify-center gap-4">
+                  <p
+                    className="capitalize text-black text-lg cursor-pointer"
+                    onClick={closeSheet}
+                  >
+                    reach us
+                  </p>
                   <Link
                     href={"/join-us"}
-                    className="capitalize text-black text-lg cursor-pointer"
+                    className="text-lg text-black capitalize pl-[2rem]"
                     onClick={closeSheet}
                   >
                     join us
                   </Link>
-                </div>
-                <div className="flex flex-col items-start justify-center gap-4">
                   <Link
                     href={"/contact"}
-                    className="capitalize text-black text-lg cursor-pointer"
+                    className="text-lg text-black capitalize pl-[2rem]"
                     onClick={closeSheet}
                   >
-                    contact us
-                  </Link>
-                </div>
-                <div className="flex flex-col items-start justify-center gap-4">
-                  <Link
-                    href={"/location"}
-                    className="capitalize text-black text-lg cursor-pointer"
-                    onClick={closeSheet}
-                  >
-                    location
+                    contact
                   </Link>
                 </div>
               </div>

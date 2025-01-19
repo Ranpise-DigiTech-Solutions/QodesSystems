@@ -50,30 +50,13 @@ const SAPServicesPage = () => {
           height={0}
         />
         <div className="flex-1 h-full flex flex-col items-start justify-center pt-4 gap-3">
-          <h2 className="font-semibold">QA & Testing Services</h2>
+          <h2 className="font-semibold">SAP services</h2>
           <p className="text-wrap text-black text-[17px] leading-6">
-            In today’s fast-paced, agile environment, multiple phases are
-            executed in parallel, and changes are dynamic. Even within the most
-            refined processes, there is a high likelihood of missed or
-            misinterpreted requirements. This is where QA & Testing become
-            essential.
+            We have rich experience in SAP Services, ensuring an efficient and smooth project. We have implemented SAP for large multinational enterprises also for smaller customers with their specific needs. 
           </p>
 
           <p className="text-wrap text-black text-[17px] leading-6">
-            At QODES Systems, we recognize that the QA & Testing phase plays a
-            pivotal role in consolidating and validating client requirements,
-            ensuring that every aspect of the system meets both functional and
-            business expectations. Thorough testing is not just a step; it’s a
-            critical success factor for overall project implementation.
-          </p>
-
-          <p className="text-wrap text-black text-[17px] leading-6">
-            Our QA & Testing services are designed to identify discrepancies
-            early, minimize risks, and ensure that the final product meets the
-            highest standards of quality, security, and performance. We enable
-            seamless, high-quality implementations by providing comprehensive
-            testing solutions tailored to your specific needs, helping you
-            deliver exceptional results and achieve long-term success.
+            We modified the standard SAP implementation methodology ASAP into a more pragmatic &quot;best practice&quot; approach.
           </p>
           <div className="w-full flex flex-col items-center justify-end py-8">
             <div className="relative w-[85%] flex flex-col items-start justify-center gap-6">

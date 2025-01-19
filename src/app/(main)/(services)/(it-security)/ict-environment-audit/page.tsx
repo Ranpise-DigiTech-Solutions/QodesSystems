@@ -64,35 +64,31 @@ const ICTEnvironmentAuditPage = () => {
           The Premium IT Audit Solution Scope includes an independent, objective
           audit of 8 key ICT Elements:
         </p>
-        <div className="w-full flex flex-col items-center justify-center gap-[0.1rem]">
-          <div className="flex flex-row items-stretch justify-center gap-[0.1rem]">
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              General I.T. Operations (Architecture overview, UPS, etc.)
-            </div>
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              Process maturity and Documentation.
-            </div>
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              Servers & Storage (System architecture, OS updates, etc.)
-            </div>
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              Networking (Cabling, Network architecture, etc.)
-            </div>
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            General I.T. Operations (Architecture overview, UPS, etc.)
           </div>
-          <div className="flex flex-row items-stretch justify-center gap-[0.1rem]">
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              End User Computing (Devices, Standard Operating Environment,
-              Threat Management, etc.)
-            </div>
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              Security (Surveillance systems, physical access controls, etc.)
-            </div>
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              Licensing (Support agreements & individual licensing, etc.)
-            </div>
-            <div className="flex-1 flex items-start justify-start p-2 text-white text-wrap leading-7 text-base bg-secondary">
-              Disaster Recovery (Backup & recovery procedures, etc.)
-            </div>
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            Process maturity and Documentation.
+          </div>
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            Servers & Storage (System architecture, OS updates, etc.)
+          </div>
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            Networking (Cabling, Network architecture, etc.)
+          </div>
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            End User Computing (Devices, Standard Operating Environment, Threat
+            Management, etc.)
+          </div>
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            Security (Surveillance systems, physical access controls, etc.)
+          </div>
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            Licensing (Support agreements & individual licensing, etc.)
+          </div>
+          <div className="p-2 text-white text-wrap leading-7 text-base bg-secondary">
+            Disaster Recovery (Backup & recovery procedures, etc.)
           </div>
         </div>
       </div>
