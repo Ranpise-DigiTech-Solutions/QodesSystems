@@ -8,7 +8,7 @@ export const serviceList: serviceListType = [
       "Our AI-powered Core Banking System (CBS) has been envisioned and meticulously engineered by an expert team with over two decades of proven success in delivering innovative solutions to large organizations. Built with cutting-edge technology, our CBS is a robust and comprehensive platform designed to streamline and centralize the operations of financial institutions. By integrating a wide range of banking functions into a unified system, QODES CBS enhances operational efficiency, strengthens customer service, and ensures regulatory compliance. This seamless integration empowers financial institutions to adapt quickly to market changes and optimize their internal processes for better performance.",
     imageUrl:
       "https://images.unsplash.com/photo-1580983559367-0dc2f8934365?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    href: "/proprietary-qodes-core-banking-system",
+    href: "/qodes-core-banking-system",
   },
   {
     id: 2,
